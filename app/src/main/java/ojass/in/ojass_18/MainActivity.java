@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView gurugyan_recycle;
     private GuruGyan_adapter guru_adapter;
     private List<GuruGyan_element> gurugyan_list;
+
+    private RecyclerView sponsors;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,12 @@ public class MainActivity extends AppCompatActivity {
         gurugyan_recycle.setAdapter(guru_adapter);
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager sponsorlayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         gurugyan_recycle.setLayoutManager(linearLayoutManager);
+
+        sponsors=findViewById(R.id.sponsor_recycler);
+        sponsors.setAdapter(guru_adapter);
+        sponsors.setLayoutManager(sponsorlayoutManager);
 
     }
 }
