@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import ojass.in.ojass_18.Fragments.EventsFragment;
 import ojass.in.ojass_18.Fragments.HomeFragment;
+import ojass.in.ojass_18.Fragments.ItinaryFragment;
 import ojass.in.ojass_18.Fragments.ProfileFragment;
 
 
@@ -22,6 +23,10 @@ public class bottomNavigationAdapter extends FragmentPagerAdapter {
             case 1:
                 return new EventsFragment();
             case 2:
+
+            case 3:
+                return new ItinaryFragment();
+            case 4:
                 return new ProfileFragment();
         }
         return null;
@@ -29,6 +34,6 @@ public class bottomNavigationAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 5;
     }
 }
