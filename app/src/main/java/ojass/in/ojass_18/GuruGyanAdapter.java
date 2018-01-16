@@ -15,19 +15,19 @@ import java.util.List;
  * Created by dellpc on 1/14/2018.
  */
 
-public class GuruGyan_adapter extends RecyclerView.Adapter<GuruGyan_adapter.MyviewHolder> {
+public class GuruGyanAdapter extends RecyclerView.Adapter<GuruGyanAdapter.MyviewHolder> {
 
 
     private LayoutInflater inflater;
-    private List<GuruGyan_element> elements= Collections.emptyList();
-    public GuruGyan_adapter(Context context, List<GuruGyan_element> element)
+    private List<GuruGyanElement> elements= Collections.emptyList();
+    public GuruGyanAdapter(Context context, List<GuruGyanElement> element)
     {
         inflater=LayoutInflater.from(context);
         elements=element;
     }
 
     @Override
-    public GuruGyan_adapter.MyviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public GuruGyanAdapter.MyviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view=inflater.inflate(R.layout.gurugyan_ele,parent,false);
         MyviewHolder holder=new MyviewHolder(view);
@@ -36,9 +36,9 @@ public class GuruGyan_adapter extends RecyclerView.Adapter<GuruGyan_adapter.Myvi
     }
 
     @Override
-    public void onBindViewHolder(GuruGyan_adapter.MyviewHolder holder, int position) {
+    public void onBindViewHolder(GuruGyanAdapter.MyviewHolder holder, int position) {
 
-        GuruGyan_element current=elements.get(position);
+        GuruGyanElement current=elements.get(position);
         holder.image.setImageResource(current.getImage());
         holder.title.setText(current.getTitle());
     }

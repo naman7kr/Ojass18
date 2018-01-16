@@ -6,12 +6,12 @@ import android.widget.ImageView;
  * Created by dellpc on 1/14/2018.
  */
 
-public class GuruGyan_element {
+public class GuruGyanElement {
 
     private int image;
     private String title;
 
-    public GuruGyan_element(int image, String title) {
+    public GuruGyanElement(int image, String title) {
         this.image = image;
         this.title = title;
     }

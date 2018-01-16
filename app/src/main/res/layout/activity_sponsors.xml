@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sponsor_new"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ojass.in.ojass_18.SponsorsActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#170f11">
+
+                <TextView
+                    android:id="@+id/sponsers_toolbar_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sponsors"
+                    android:textSize="25dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#fff"/>
+
+            </android.support.v7.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Education Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/aptech"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/eten" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/cl"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/cetpa"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Optical Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/himalaya"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Electronics Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/laptronics"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Gift Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/pipal"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Food Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/moti"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/bluediamond"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/bluesaphire"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/pind"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/brubeck"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/caferegal"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/dominos"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/hangout"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Radio Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/radiodhoom"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/red"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Automobile Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/hondaq"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Banking Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/bob"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Insurance Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/national"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Event Sponsors"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icici"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/i3indiya"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Style Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/hoffman"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Online Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/codechef"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/hackerearth"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/doselect"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i13"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Lodging Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/sonnet"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i14"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Informal Event Partner"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/oye"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:id="@+id/i15"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Past Sponsor"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="18sp"
+                    android:textColor="#170f11"
+                    android:fontFamily="casual"
+                    android:textStyle="bold|italic"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/cocacola"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/buy_hatke"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/indian_oil"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="center"
+                    android:padding="5dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ibm"/>
+            </LinearLayout>
+
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</RelativeLayout>
