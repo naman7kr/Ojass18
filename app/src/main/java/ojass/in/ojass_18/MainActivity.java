@@ -13,9 +13,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RecyclerView gurugyan_recycle;
-    private GuruGyanAdapter guru_adapter;
-    private List<GuruGyanElement> gurugyan_list;
+    private RecyclerView gurugyanRecycle;
+    private GuruGyanAdapter guruAdapter;
+    private List<GuruGyanElement> gurugyanList;
 
     private RecyclerView sponsors;
     private TextView seeGuru;
@@ -25,27 +25,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gurugyan_list=new ArrayList<>();
-        gurugyan_list.add(new GuruGyanElement(R.drawable.ic_launcher_background,"Title1"));
-        gurugyan_list.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE2"));
-        gurugyan_list.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE3"));
-        gurugyan_list.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE4"));
-        gurugyan_list.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE5"));
+        gurugyanList=new ArrayList<>();
+        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"Title1"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE2"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE3"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE4"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE5"));
         seeGuru=findViewById(R.id.gurugyan_seeall);
         seeSpons=findViewById(R.id.sponsor_seeall);
 
         seeGuru.setOnClickListener(this);
         seeSpons.setOnClickListener(this);
-        guru_adapter=new GuruGyanAdapter(this,gurugyan_list);
-        gurugyan_recycle=findViewById(R.id.guru_recycler);
-        gurugyan_recycle.setAdapter(guru_adapter);
-
+        guruAdapter=new GuruGyanAdapter(this,gurugyanList);
+        gurugyanRecycle=findViewById(R.id.guru_recycler);
+        gurugyanRecycle.setAdapter(guruAdapter);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        LinearLayoutManager sponsorlayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        gurugyan_recycle.setLayoutManager(linearLayoutManager);
+        gurugyanRecycle.setLayoutManager(linearLayoutManager);
 
         sponsors=findViewById(R.id.sponsor_recycler);
-        sponsors.setAdapter(guru_adapter);
+        LinearLayoutManager sponsorlayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        sponsors.setAdapter(guruAdapter);
         sponsors.setLayoutManager(sponsorlayoutManager);
 
     }
