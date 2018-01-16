@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
@@ -23,9 +25,10 @@ import ojass.in.ojass_18.Adapters.bottomNavigationAdapter;
 
 import ojass.in.ojass_18.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
+    private RelativeLayout rLayout;
     private Toolbar toolbar;
     private SlidingUpPanelLayout slidingLayout;
     Animation slide_down;
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void setBottomNavigation() {
         bottomNavigationView = findViewById(R.id.activity_main_bottomnavigation);
         slidingLayout=findViewById(R.id.sliding_layout);
+        rLayout=findViewById(R.id.activity_main_relativelayout);
         slidingLayout.setVisibility(View.GONE);
         slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.slide_down_animation);
@@ -56,39 +60,34 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 switch (item.getItemId()) {
                     case R.id.bottom_nav_home:
                         viewPager.setCurrentItem(0);
-                        slidingLayout.startAnimation(slide_down);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         slidingLayout.setVisibility(View.GONE);
                         return true;
                     case R.id.bottom_nav_events:
                         viewPager.setCurrentItem(1);
-                        slidingLayout.startAnimation(slide_down);
                         slidingLayout.setVisibility(View.GONE);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                        return true;
 
-                        return true;
-                    case R.id.bottom_nav_ojass:
-                        viewPager.setCurrentItem(2);
-                        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-                        slidingLayout.setVisibility(View.VISIBLE);
-                        slidingLayout.startAnimation(slide_up);
-                        return true;
                     case R.id.bottom_nav_itinary:
                         viewPager.setCurrentItem(3);
-                        slidingLayout.startAnimation(slide_down);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         slidingLayout.setVisibility(View.GONE);
                         return true;
                     case R.id.bottom_nav_profile:
                         viewPager.setCurrentItem(4);
-                        slidingLayout.startAnimation(slide_down);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         slidingLayout.setVisibility(View.GONE);
                         return true;
-
+                    case R.id.bottom_nav_ojass:
+                        slidingLayout.setVisibility(View.VISIBLE);
+                        slidingLayout.setAnimation(slide_up);
+                        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                        return false;
                 }
                 return false;
             }
@@ -101,15 +100,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+
                 if (position == 0) {
                     bottomNavigationView.setSelectedItemId(R.id.bottom_nav_home);
                 }
                 if (position == 1) {
                     bottomNavigationView.setSelectedItemId(R.id.bottom_nav_events);
 
-                }
-                if(position == 2){
-                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_ojass);
                 }
                 if (position == 3) {
                     bottomNavigationView.setSelectedItemId(R.id.bottom_nav_itinary);
@@ -123,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        rLayout.setOnClickListener(this);
         disableShiftMode(bottomNavigationView);
     }
     @SuppressLint("RestrictedApi")
@@ -146,4 +144,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view.getId()==R.id.activity_main_relativelayout)
+        {
+            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            slidingLayout.setVisibility(View.GONE);
+        }
+    }
 }
