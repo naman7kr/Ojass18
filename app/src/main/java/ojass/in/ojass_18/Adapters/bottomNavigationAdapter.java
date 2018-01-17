@@ -24,16 +24,17 @@ public class bottomNavigationAdapter extends FragmentPagerAdapter {
             case 1:
                 return new EventsFragment();
             case 2:
-            case 3:
                 return new ItinaryFragment();
-            case 4:
+            case 3:
                 return new ProfileFragment();
+
+
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 5;
+        return 4;
     }
 }

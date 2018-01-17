@@ -13,7 +13,7 @@
         android:title="Events"
         />
     <item
-        android:id="@+id/bottom_nav_ojass"
+        android:id="@+id/bottom_nav_barcode"
         android:icon="@mipmap/ic_launcher_round"
         android:title="" />
     <item

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="420dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@color/colorPrimaryDark"
+    android:padding="20dp"
 
-</android.support.constraint.ConstraintLayout>
+    >
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/close_popup"
+        android:text="X"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:background="@drawable/circular_background"
+        />
+</LinearLayout>
