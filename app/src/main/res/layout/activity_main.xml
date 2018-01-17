@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:layout_above="@id/activity_main_bottomnavigation"
-        android:visibility="gone"
+        android:visibility="visible"
         app:umanoDragView="@+id/dragView"
         app:umanoOverlay="true"
         app:umanoPanelHeight="68dp"
@@ -30,14 +30,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/activity_main_relativelayout"
+            android:gravity="center_horizontal"
             >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/slide_up_button"
+                android:id="@+id/slide_up_button"
+                android:layout_alignParentBottom="true"
 
+                />
         </RelativeLayout>
 
         <!-- SLIDING LAYOUT -->
         <include layout="@layout/include_slideup" />
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
     <android.support.design.widget.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

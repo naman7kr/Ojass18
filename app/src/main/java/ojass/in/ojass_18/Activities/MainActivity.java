@@ -10,11 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ViewPager viewPager;
     private RelativeLayout rLayout;
     private Toolbar toolbar;
+    private PopupWindow barCodeWindow;
+    private Button slideUpButton;
     private SlidingUpPanelLayout slidingLayout;
     Animation slide_down;
     Animation slide_up;
@@ -55,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 R.anim.slide_up_animation);
 
 
+
         viewPager = findViewById(R.id.activity_main_viewpager);
         viewPager.setAdapter(new bottomNavigationAdapter(getSupportFragmentManager()));
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,27 +72,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         viewPager.setCurrentItem(0);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         slidingLayout.setVisibility(View.GONE);
+                //        barCodeWindow.dismiss();
                         return true;
                     case R.id.bottom_nav_events:
                         viewPager.setCurrentItem(1);
                         slidingLayout.setVisibility(View.GONE);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                 //       barCodeWindow.dismiss();
                         return true;
 
                     case R.id.bottom_nav_itinary:
                         viewPager.setCurrentItem(3);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         slidingLayout.setVisibility(View.GONE);
+                     //   barCodeWindow.dismiss();
                         return true;
                     case R.id.bottom_nav_profile:
                         viewPager.setCurrentItem(4);
                         slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         slidingLayout.setVisibility(View.GONE);
+                     //   barCodeWindow.dismiss();
                         return true;
                     case R.id.bottom_nav_ojass:
-                        slidingLayout.setVisibility(View.VISIBLE);
-                        slidingLayout.setAnimation(slide_up);
-                        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                        slidingLayout.setVisibility(View.GONE);
+                       // slidingLayout.setAnimation(slide_up);
+                        slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                       // barCodeWindow.dismiss();
                         return false;
                 }
                 return false;
@@ -143,7 +154,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.e("BNVHelper", "Unable to change value of shift mode", e);
         }
     }
-
+    private void createBarCodePopUp() {
+        LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View barCodeView=inflater.inflate(R.layout.barcode_popup,null);
+        barCodeWindow.showAtLocation(viewPager, Gravity.CENTER,0,0);
+    }
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.activity_main_relativelayout)
