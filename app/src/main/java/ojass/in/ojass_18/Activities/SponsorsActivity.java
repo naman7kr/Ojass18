@@ -1,10 +1,12 @@
-package ojass.in.ojass_18;
+package ojass.in.ojass_18.Activities;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import ojass.in.ojass_18.R;
 
 public class SponsorsActivity extends AppCompatActivity {
 

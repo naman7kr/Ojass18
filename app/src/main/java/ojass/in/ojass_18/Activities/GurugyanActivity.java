@@ -1,7 +1,9 @@
-package ojass.in.ojass_18;
+package ojass.in.ojass_18.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import ojass.in.ojass_18.R;
 
 public class GurugyanActivity extends AppCompatActivity {
 

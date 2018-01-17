@@ -1,4 +1,4 @@
-package ojass.in.ojass_18;
+package ojass.in.ojass_18.Infrastructure;
 
 import android.widget.ImageView;
 

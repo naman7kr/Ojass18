@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+    <item
+        android:id="@+id/bottom_nav_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home" />
+    <item
+        android:id="@+id/bottom_nav_events"
+        android:icon="@drawable/events"
+        android:title="Events"
+        />
+    <item
+        android:id="@+id/bottom_nav_ojass"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="" />
+    <item
+        android:id="@+id/bottom_nav_itinary"
+        android:title="Itinary"
+        android:icon="@mipmap/ic_launcher_round"
+        />
+    <item
+        android:id="@+id/bottom_nav_profile"
+        android:icon="@drawable/profile_24dp"
+        android:title="Profile" />
+
+
+</menu>

@@ -1,4 +1,4 @@
-package ojass.in.ojass_18;
+package ojass.in.ojass_18.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
+
+import ojass.in.ojass_18.Infrastructure.GuruGyanElement;
+import ojass.in.ojass_18.R;
 
 /**
  * Created by dellpc on 1/14/2018.
