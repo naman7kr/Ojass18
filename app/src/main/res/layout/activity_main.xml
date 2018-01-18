@@ -4,55 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/ojass_background"
     android:id="@+id/rel_main"
    >
-    <include layout="@layout/include_toolbar" />
-
-    <android.support.v4.view.ViewPager
+    <include layout="@layout/include_toolbar"
+         />
+    <fragment
+        android:id="@+id/fragment"
+        android:name="ojass.in.ojass_18.Fragments.HomeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/activity_main_viewpager"
-        android:layout_above="@id/activity_main_bottomnavigation"
         android:layout_below="@+id/include_toolbar"
+        android:layout_above="@+id/bottom_nav_layout"
         />
-
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout
-        android:id="@+id/sliding_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:layout_above="@id/activity_main_bottomnavigation"
-        android:visibility="visible"
-        app:umanoDragView="@+id/dragView"
-        app:umanoOverlay="true"
-        app:umanoPanelHeight="68dp"
-        app:umanoShadowHeight="4dp">
-
-        <!-- MAIN CONTENT -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/activity_main_relativelayout"
-            android:gravity="center_horizontal"
-            >
+    <include layout="@layout/include_bottomnav_toolbar"
+    />
 
 
-        </RelativeLayout>
 
-        <!-- SLIDING LAYOUT -->
-        <include layout="@layout/include_slideup" />
-
-    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
-    <android.support.design.widget.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/activity_main_bottomnavigation"
-        app:menu="@menu/bottom_nav_menu"
-        android:background="@color/bottomNavDark"
-        />
 
 </RelativeLayout>
