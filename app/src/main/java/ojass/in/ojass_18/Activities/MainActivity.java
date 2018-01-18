@@ -2,10 +2,13 @@ package ojass.in.ojass_18.Activities;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +31,10 @@ import java.lang.reflect.Field;
 
 import ojass.in.ojass_18.Adapters.bottomNavigationAdapter;
 
+import ojass.in.ojass_18.Fragments.EventsFragment;
+import ojass.in.ojass_18.Fragments.HomeFragment;
+import ojass.in.ojass_18.Fragments.ItinaryFragment;
+import ojass.in.ojass_18.Fragments.ProfileFragment;
 import ojass.in.ojass_18.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -51,107 +58,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setBottomNavigation() {
-        bottomNavigationView = findViewById(R.id.activity_main_bottomnavigation);
-        slidingLayout=findViewById(R.id.sliding_layout);
-        rLayout=findViewById(R.id.activity_main_relativelayout);
-        slidingLayout.setVisibility(View.GONE);
-        slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slide_down_animation);
-
-        slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slide_up_animation);
+        findViewById(R.id.bottom_nav_home).setOnClickListener(this);
+        findViewById(R.id.bottom_nav_events).setOnClickListener(this);
+        findViewById(R.id.bottom_nav_barcode).setOnClickListener(this);
+        findViewById(R.id.bottom_nav_itinary).setOnClickListener(this);
+        findViewById(R.id.bottom_nav_profile).setOnClickListener(this);
 
         mDialog=new Dialog(this);
 
-        viewPager = findViewById(R.id.activity_main_viewpager);
-        viewPager.setAdapter(new bottomNavigationAdapter(getSupportFragmentManager()));
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()) {
-                    case R.id.bottom_nav_home:
-                        viewPager.setCurrentItem(0);
 
-                        //        barCodeWindow.dismiss();
-                        return true;
-                    case R.id.bottom_nav_events:
-                        viewPager.setCurrentItem(1);
-                        //       barCodeWindow.dismiss();
-                        return true;
 
-                    case R.id.bottom_nav_itinary:
-                        viewPager.setCurrentItem(2);
-
-                        //   barCodeWindow.dismiss();
-                        return true;
-                    case R.id.bottom_nav_profile:
-                        viewPager.setCurrentItem(3);
-
-                        //   barCodeWindow.dismiss();
-                        return true;
-                    case R.id.bottom_nav_barcode:
-
-                        createBarCodePopUp();
-                        // barCodeWindow.dismiss();
-                        return false;
-                }
-                return false;
-            }
-        });
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-                if (position == 0) {
-                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_home);
-                }
-                if (position == 1) {
-                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_events);
-
-                }
-                if (position == 2) {
-                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_itinary);
-                }
-                if(position ==3)
-                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_profile);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        rLayout.setOnClickListener(this);
-        disableShiftMode(bottomNavigationView);
     }
-    @SuppressLint("RestrictedApi")
-    private void disableShiftMode(BottomNavigationView view) {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
-        try {
-            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
-            shiftingMode.setAccessible(true);
-            shiftingMode.setBoolean(menuView, false);
-            shiftingMode.setAccessible(false);
-            for (int i = 0; i < menuView.getChildCount(); i++) {
-                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                item.setShiftingMode(false);
-                // set once again checked value, so view will be updated
-                item.setChecked(item.getItemData().isChecked());
-            }
-        } catch (NoSuchFieldException e) {
-            Log.e("BNVHelper", "Unable to get shift mode field", e);
-        } catch (IllegalAccessException e) {
-            Log.e("BNVHelper", "Unable to change value of shift mode", e);
-        }
-    }
+
+
     private void createBarCodePopUp() {
-       mDialog.setContentView(R.layout.barcode_popup);
+       mDialog.setContentView(R.layout.qrcode_popup);
        mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
        mDialog.show();
         TextView closePopUp=mDialog.findViewById(R.id.close_popup);
@@ -159,15 +81,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.activity_main_relativelayout)
+        int viewId=view.getId();
+        if(viewId==R.id.bottom_nav_home)
         {
-            slidingLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-            slidingLayout.setVisibility(View.GONE);
+            changeFragment(new HomeFragment(),R.layout.fragment_home);
         }
+        if(viewId==R.id.bottom_nav_events)
+        {
+            changeFragment(new EventsFragment(),R.layout.fragment_events);
+        }
+        if(viewId==R.id.bottom_nav_barcode)
+        {
+            createBarCodePopUp();
+        }
+        if(viewId==R.id.bottom_nav_itinary)
+        {
+            changeFragment(new ItinaryFragment(),R.layout.fragment_itinary);
+        }
+        if(viewId==R.id.bottom_nav_profile)
+        {
+            changeFragment(new ProfileFragment(),R.layout.fragment_profile);
+        }
+
         if(view.getId()==R.id.close_popup)
         {
             mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
             mDialog.dismiss();
         }
+    }
+    void changeFragment(Fragment fragment, int layoutId)
+    {
+        FragmentManager fm=getSupportFragmentManager();
+        fm.beginTransaction().replace(layoutId, fragment).commit();
     }
 }
