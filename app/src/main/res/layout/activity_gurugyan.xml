@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<android.support.v4.view.ViewPager
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:id="@+id/guru_viewpager"
     android:layout_height="match_parent"
-    android:background="@drawable/backk">
+    android:layout_width="match_parent"
+    ></android.support.v4.view.ViewPager>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:id="@+id/events_layout"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp">
-    </RelativeLayout>
 
-</RelativeLayout>

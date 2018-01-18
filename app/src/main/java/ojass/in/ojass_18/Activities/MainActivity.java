@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SlidingUpPanelLayout slidingLayout;
     Animation slide_down;
     Animation slide_up;
-
+//new
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
