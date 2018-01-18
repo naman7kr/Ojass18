@@ -1,11 +1,33 @@
-<LinearLayout android:id="@+id/dragView"
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/dragView"
+
+    >
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:background="@drawable/slide_up_button"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/slide_up_button"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_black_24dp"
+            />
+    </LinearLayout>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/slide_up_panel"
     android:clickable="true"
     android:focusable="false"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:id="@+id/slide_up_content"
+   >
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -35,6 +57,9 @@
             android:text="LOL"
             android:layout_gravity="center"
             android:gravity="center"
+            android:layout_marginBottom="100dp"
+            android:id="@+id/profile_avatar"
             />
     </LinearLayout>
+</LinearLayout>
 </LinearLayout>

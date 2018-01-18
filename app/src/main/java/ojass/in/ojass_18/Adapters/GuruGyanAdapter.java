@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-import ojass.in.ojass_18.Infrastructure.GuruGyanElement;
+import ojass.in.ojass_18.Modals.GuruGyanElement;
 import ojass.in.ojass_18.R;
 
 /**

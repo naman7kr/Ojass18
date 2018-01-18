@@ -22,7 +22,7 @@ import ojass.in.ojass_18.Activities.SponsorsActivity;
 import ojass.in.ojass_18.Adapters.EventAdapter;
 import ojass.in.ojass_18.Adapters.GuruGyanAdapter;
 import ojass.in.ojass_18.Adapters.SliderAdapter;
-import ojass.in.ojass_18.Infrastructure.GuruGyanElement;
+import ojass.in.ojass_18.Modals.GuruGyanElement;
 import ojass.in.ojass_18.R;
 
 
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
         v=view;
         //Sanays Work
-        mviewPager = view.findViewById(R.id.mainactivity_viewpager);
+        mviewPager = view.findViewById(R.id.home_fragment_viewpager);
         indicator = view.findViewById(R.id.mainactivity_dots);
         sliderAdapter = new SliderAdapter(getContext());
         mviewPager.setAdapter(sliderAdapter);
