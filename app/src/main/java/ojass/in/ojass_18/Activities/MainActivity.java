@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void createBarCodePopUp() {
-       mDialog.setContentView(R.layout.barcode_popup);
+       mDialog.setContentView(R.layout.qrcode_popup);
        mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
        mDialog.show();
         TextView closePopUp=mDialog.findViewById(R.id.close_popup);
