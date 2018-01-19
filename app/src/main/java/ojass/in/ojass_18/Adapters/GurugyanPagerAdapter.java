@@ -49,13 +49,18 @@ public class GurugyanPagerAdapter extends PagerAdapter {
         layoutInflater=LayoutInflater.from(context);
         View itemView=layoutInflater.inflate(R.layout.gurugyan_slide,container,false);
         ImageView guruImage=itemView.findViewById(R.id.gurugyan_person);
-        TextView guruName=itemView.findViewById(R.id.gurugyan_name);
-        CardView nameCardView=itemView.findViewById(R.id.mycardview);
-        nameCardView.setCardBackgroundColor(Color.GRAY);
+       // TextView guruName=itemView.findViewById(R.id.gurugyan_name);
+        //ImageView goLeft=itemView.findViewById(R.id.gurugyan_goleft);
+        //ImageView goRight=itemView.findViewById(R.id.gurugyan_goright);
+
+        //if(position==0)
+         //   goLeft.setColorFilter(Color.GRAY);
+       // else if(position==(list1.size()-1))
+        //    goRight.setColorFilter(Color.GRAY);
 
         GurugyanModel current=list1.get(position);
         guruImage.setImageResource(current.getImageRes());
-        guruName.setText(current.getName());
+        //guruName.setText(current.getName());
         container.addView(itemView);
         return itemView;
     }
