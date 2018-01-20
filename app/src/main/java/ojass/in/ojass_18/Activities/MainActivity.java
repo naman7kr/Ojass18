@@ -37,28 +37,23 @@ import ojass.in.ojass_18.Fragments.ItinaryFragment;
 import ojass.in.ojass_18.Fragments.ProfileFragment;
 import ojass.in.ojass_18.R;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
     private RelativeLayout rLayout;
-    private Toolbar toolbar;
+
     private Dialog mDialog;
     private Button slideUpButton;
     private SlidingUpPanelLayout slidingLayout;
     String currentFragmentTag;
     private Fragment newFragment;
-    Animation slide_down;
-    Animation slide_up;
-    Bundle bundle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bundle=savedInstanceState;
-        toolbar = findViewById(R.id.include_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+
         setBottomNavigation();
         addHomeFragment();
     }
@@ -66,13 +61,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void addHomeFragment() {
         getSupportFragmentManager().beginTransaction().add(R.id.activity_main_fragmentcontainer,new HomeFragment(),"Home").commit();
         currentFragmentTag="Home";
-        findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#9E9E9E"));
+        findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
     }
 
     private void setBottomNavigation() {
         findViewById(R.id.bottom_nav_home).setOnClickListener(this);
         findViewById(R.id.bottom_nav_events).setOnClickListener(this);
-        findViewById(R.id.bottom_nav_barcode).setOnClickListener(this);
+        findViewById(R.id.bottom_nav_qrcode).setOnClickListener(this);
         findViewById(R.id.bottom_nav_itinary).setOnClickListener(this);
         findViewById(R.id.bottom_nav_profile).setOnClickListener(this);
         mDialog=new Dialog(this);
@@ -87,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newFragment=new HomeFragment();
                 changeFragment(newFragment,"Home");
                 currentFragmentTag="Home";
-                view.setBackgroundColor(Color.parseColor("#9E9E9E"));
+                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_events).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_itinary).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_profile).setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -103,14 +98,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newFragment=new EventsFragment();
                 changeFragment(newFragment,"Events");
                 currentFragmentTag="Events";
-                view.setBackgroundColor(Color.parseColor("#9E9E9E"));
+                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_itinary).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_profile).setBackgroundColor(Color.parseColor("#FFFFFF"));
             }
 
         }
-        if(viewId==R.id.bottom_nav_barcode)
+        if(viewId==R.id.bottom_nav_qrcode)
         {
             createQRPopup();
         }
@@ -121,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newFragment=new ItinaryFragment();
                 changeFragment(newFragment,"Itinary");
                 currentFragmentTag="Itinary";
-                view.setBackgroundColor(Color.parseColor("#9E9E9E"));
+                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_events).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_profile).setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -136,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 newFragment=new ProfileFragment();
                 changeFragment(newFragment,"Profile");
                 currentFragmentTag="Profile";
-                view.setBackgroundColor(Color.parseColor("#9E9E9E"));
+                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_itinary).setBackgroundColor(Color.parseColor("#FFFFFF"));
                 findViewById(R.id.bottom_nav_events).setBackgroundColor(Color.parseColor("#FFFFFF"));
