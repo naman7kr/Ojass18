@@ -1,36 +1,20 @@
 package ojass.in.ojass_18.Activities;
 
 import android.app.Dialog;
-
-
 import android.graphics.Bitmap;
-
 import android.graphics.Color;
-import android.support.design.widget.BottomNavigationView;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-
 import android.view.View;
-import android.view.animation.Animation;
-
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-
 import ojass.in.ojass_18.Fragments.EventsFragment;
 import ojass.in.ojass_18.Fragments.HomeFragment;
 import ojass.in.ojass_18.Fragments.ItinaryFragment;
@@ -38,16 +22,10 @@ import ojass.in.ojass_18.Fragments.ProfileFragment;
 import ojass.in.ojass_18.R;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    private BottomNavigationView bottomNavigationView;
-    private ViewPager viewPager;
-    private RelativeLayout rLayout;
 
     private Dialog mDialog;
-    private Button slideUpButton;
-    private SlidingUpPanelLayout slidingLayout;
-    String currentFragmentTag;
+    private String currentFragmentTag;
     private Fragment newFragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +33,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         setBottomNavigation();
+
         addHomeFragment();
     }
 
@@ -70,7 +49,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.bottom_nav_qrcode).setOnClickListener(this);
         findViewById(R.id.bottom_nav_itinary).setOnClickListener(this);
         findViewById(R.id.bottom_nav_profile).setOnClickListener(this);
-        mDialog=new Dialog(this);
+
     }
     @Override
     public void onClick(View view) {
@@ -82,11 +61,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new HomeFragment();
                 changeFragment(newFragment,"Home");
                 currentFragmentTag="Home";
-                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_events).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_itinary).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_profile).setBackgroundColor(Color.parseColor("#FFFFFF"));
-
             }
 
 
@@ -98,15 +72,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new EventsFragment();
                 changeFragment(newFragment,"Events");
                 currentFragmentTag="Events";
-                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_itinary).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_profile).setBackgroundColor(Color.parseColor("#FFFFFF"));
             }
 
         }
         if(viewId==R.id.bottom_nav_qrcode)
         {
+            //create qr dialog
+            mDialog=new Dialog(this);
             createQRPopup();
         }
         if(viewId==R.id.bottom_nav_itinary)
@@ -116,11 +88,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new ItinaryFragment();
                 changeFragment(newFragment,"Itinary");
                 currentFragmentTag="Itinary";
-                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_events).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_profile).setBackgroundColor(Color.parseColor("#FFFFFF"));
-
             }
 
         }
@@ -131,11 +98,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new ProfileFragment();
                 changeFragment(newFragment,"Profile");
                 currentFragmentTag="Profile";
-                view.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_itinary).setBackgroundColor(Color.parseColor("#FFFFFF"));
-                findViewById(R.id.bottom_nav_events).setBackgroundColor(Color.parseColor("#FFFFFF"));
-
 
             }
         }
