@@ -30,8 +30,6 @@ public class GurugyanActivity extends AppCompatActivity {
     List<GurugyanModel> guruList;
     GurugyanPagerAdapter adapter;
     CardView myCardView;
-    ImageView goLeft;
-    ImageView goRight;
     TextView guruName;
     LinearLayout OnTap;
     LinearLayout expandableView;
@@ -40,12 +38,8 @@ public class GurugyanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gurugyan);
-        goLeft=findViewById(R.id.gurugyan_goleft);
-        goRight=findViewById(R.id.gurugyan_goright);
         guruName=findViewById(R.id.gurugyan_name);
         guruList=new ArrayList<>();
-        goRight.setVisibility(View.GONE);
-        goLeft.setVisibility(View.GONE);
         guruList.add(new GurugyanModel(R.drawable.xmen,"Testgo"));
         guruList.add(new GurugyanModel(R.drawable.punisher,"AgainTest"));
         guruList.add(new GurugyanModel(R.drawable.punisher,"yetAgain"));
@@ -56,7 +50,6 @@ public class GurugyanActivity extends AppCompatActivity {
         expandableView=findViewById(R.id.expandable_layout);
 
         guruName.setText(guruList.get(0).getName());
-        goLeft.setColorFilter(Color.GRAY);
         GurugyanPager =findViewById(R.id.guru_viewpager);
         GurugyanPager.setAdapter(adapter);
         GurugyanPager.setPageTransformer(false,new IntroPageTransform());
@@ -74,34 +67,6 @@ public class GurugyanActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(final int position) {
-
-                Log.e("gurugyanActivity",""+position);
-                if(position==0)
-                    goLeft.setColorFilter(Color.GRAY);
-                else
-                    goLeft.setColorFilter(Color.WHITE);
-                if(position==(guruList.size()-1))
-                    goRight.setColorFilter(Color.GRAY);
-                else
-                    goRight.setColorFilter(Color.WHITE);
-
-
-
-                goLeft.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(position!=0)
-                            GurugyanPager.setCurrentItem(position-1,true);
-                    }
-                });
-
-                goRight.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(position!=(guruList.size()-1))
-                            GurugyanPager.setCurrentItem(position+1,true);
-                    }
-                });
 
                 OnTap.setOnClickListener(new View.OnClickListener() {
                     @Override
