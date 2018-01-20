@@ -21,24 +21,6 @@ android:layout_width="match_parent"
         android:layout_above="@+id/mycardview"
         />
 
-    <ImageView
-        android:id="@+id/gurugyan_goright"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/background_rounded"
-        android:src="@drawable/ic_arrow_forward_black_24dp"
-        android:layout_above="@+id/mycardview"
-        android:layout_marginLeft="200dp"
-        />
-    <ImageView
-        android:id="@+id/gurugyan_goleft"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/background_rounded"
-        android:src="@drawable/ic_arrow_back_black_24dp"
-       android:layout_above="@+id/mycardview"
-        android:layout_marginLeft="120dp"
-        />
     <android.support.v7.widget.CardView
         android:id="@+id/mycardview"
         android:layout_width="match_parent"
