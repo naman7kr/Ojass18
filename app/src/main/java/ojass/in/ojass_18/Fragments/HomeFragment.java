@@ -30,7 +30,9 @@ import ojass.in.ojass_18.R;
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private RecyclerView rvGuruGyan, rvSponsors, rvEvents;
     private GuruGyanAdapter guruAdapter;
+    private GuruGyanAdapter sponsorAdapter;
     private List<GuruGyanElement> gurugyanList;
+    private List<GuruGyanElement> sponsorList;
     private TextView seeGuru;
     private TextView seeSpons;
     private View v;
@@ -58,6 +60,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //Anirudhs Work
         prepareGuruGyan(view);
 
+        //another Anirudh Work
+        prepareSponsor(view);
+
         return view;
     }
 
@@ -84,21 +89,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE4"));
         gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE5"));
         seeGuru=view.findViewById(R.id.gurugyan_seeall);
-        seeSpons=view.findViewById(R.id.sponsor_seeall);
+
 
         seeGuru.setOnClickListener(this);
-        seeSpons.setOnClickListener(this);
+
         guruAdapter=new GuruGyanAdapter(getContext(),gurugyanList);
         rvGuruGyan =view.findViewById(R.id.guru_recycler);
         rvGuruGyan.setAdapter(guruAdapter);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         rvGuruGyan.setLayoutManager(linearLayoutManager);
 
+
+
+    }
+
+    private void prepareSponsor(View view)
+    {
+        sponsorList=new ArrayList<>();
+        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor1"));
+        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor2"));
+        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor3"));
+        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor4"));
+        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor5"));
+        seeSpons=view.findViewById(R.id.sponsor_seeall);
+        seeSpons.setOnClickListener(this);
+
+        sponsorAdapter=new GuruGyanAdapter(getContext(),sponsorList);
         rvSponsors =view.findViewById(R.id.sponsor_recycler);
         LinearLayoutManager sponsorlayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        rvSponsors.setAdapter(guruAdapter);
+        rvSponsors.setAdapter(sponsorAdapter);
         rvSponsors.setLayoutManager(sponsorlayoutManager);
-
     }
 
     private void addImageSlider(View view) {
