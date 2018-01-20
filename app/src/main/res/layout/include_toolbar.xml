@@ -1,18 +1,18 @@
-<android.support.v7.widget.Toolbar
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#212537"
+    android:layout_height="65dp"
+    android:background="@color/colorPrimary"
     android:id="@+id/include_toolbar"
     >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ojass 18"
-        android:textColor="@color/white"
+        android:textColor="#fff"
         android:textSize="20sp"
-        android:id="@+id/toolbar_title"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
         />
-</android.support.v7.widget.Toolbar>
-
+</LinearLayout>
