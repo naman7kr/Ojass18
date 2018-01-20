@@ -3,6 +3,7 @@ package ojass.in.ojass_18.Adapters;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.PagerAdapter;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,6 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((RelativeLayout)object);
+        container.removeView((View) object);
     }
 }

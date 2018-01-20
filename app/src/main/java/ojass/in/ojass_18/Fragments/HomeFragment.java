@@ -1,8 +1,10 @@
 package ojass.in.ojass_18.Fragments;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,12 +49,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     ViewPager mviewPager;
     SliderAdapter sliderAdapter;
     CircleIndicator indicator;
+    ScrollView scrollView;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
         v=view;
+        scrollView=view.findViewById(R.id.home_fragment_scrollview);
+        scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+            }
+        });
+
         //Sanays Work
         mviewPager = view.findViewById(R.id.home_fragment_viewpager);
         indicator = view.findViewById(R.id.mainactivity_dots);
