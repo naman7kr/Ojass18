@@ -12,13 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.ScrollView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import me.relex.circleindicator.CircleIndicator;
 import ojass.in.ojass_18.Activities.EventActivity;
 import ojass.in.ojass_18.Activities.GurugyanActivity;
@@ -32,24 +28,19 @@ import ojass.in.ojass_18.R;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    private RecyclerView gurugyanRecycle;
+    private RecyclerView rvGuruGyan, rvSponsors, rvEvents;
     private GuruGyanAdapter guruAdapter;
     private List<GuruGyanElement> gurugyanList;
-
-    private RecyclerView sponsors;
     private TextView seeGuru;
     private TextView seeSpons;
     private View v;
-
-    private RecyclerView eventrecycler;
     private RecyclerView.LayoutManager eventlayoutmanager;
     private RecyclerView.Adapter eventadapter;
     private TextView eventSeeAll;
     private ArrayList<String> dataset;
-    ViewPager mviewPager;
-    SliderAdapter sliderAdapter;
-    CircleIndicator indicator;
-    ScrollView scrollView;
+    private ViewPager mviewPager;
+    private SliderAdapter sliderAdapter;
+    private CircleIndicator indicator;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
@@ -57,23 +48,35 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
         v=view;
-        scrollView=view.findViewById(R.id.home_fragment_scrollview);
-        scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-            }
-        });
 
         //Sanays Work
-        mviewPager = view.findViewById(R.id.home_fragment_viewpager);
-        indicator = view.findViewById(R.id.mainactivity_dots);
-        sliderAdapter = new SliderAdapter(getContext());
-        mviewPager.setAdapter(sliderAdapter);
-        indicator.setViewPager(mviewPager);
+        addImageSlider(view);
 
+        //Gaurav Sethis work
+        prepareEvents(view);
 
         //Anirudhs Work
+        prepareGuruGyan(view);
+
+        return view;
+    }
+
+    private void prepareEvents(View view) {
+        eventSeeAll=view.findViewById(R.id.events_seeall);
+        eventSeeAll.setOnClickListener(this);
+        dataset=new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            dataset.add("gaurav");
+        }
+        rvEvents =view.findViewById(R.id.event_recycler);
+        rvEvents.setHasFixedSize(true);
+        eventlayoutmanager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        rvEvents.setLayoutManager(eventlayoutmanager);
+        eventadapter = new EventAdapter(dataset);
+        rvEvents.setAdapter(eventadapter);
+    }
+
+    private void prepareGuruGyan(View view) {
         gurugyanList=new ArrayList<>();
         gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"Title1"));
         gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE2"));
@@ -86,34 +89,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         seeGuru.setOnClickListener(this);
         seeSpons.setOnClickListener(this);
         guruAdapter=new GuruGyanAdapter(getContext(),gurugyanList);
-        gurugyanRecycle=view.findViewById(R.id.guru_recycler);
-        gurugyanRecycle.setAdapter(guruAdapter);
+        rvGuruGyan =view.findViewById(R.id.guru_recycler);
+        rvGuruGyan.setAdapter(guruAdapter);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        gurugyanRecycle.setLayoutManager(linearLayoutManager);
+        rvGuruGyan.setLayoutManager(linearLayoutManager);
 
-        sponsors=view.findViewById(R.id.sponsor_recycler);
+        rvSponsors =view.findViewById(R.id.sponsor_recycler);
         LinearLayoutManager sponsorlayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        sponsors.setAdapter(guruAdapter);
-        sponsors.setLayoutManager(sponsorlayoutManager);
+        rvSponsors.setAdapter(guruAdapter);
+        rvSponsors.setLayoutManager(sponsorlayoutManager);
 
-        //Gaurav Sethis work
-        eventSeeAll=view.findViewById(R.id.events_seeall);
-        eventSeeAll.setOnClickListener(this);
-        dataset=new ArrayList<>();
+    }
 
-        for (int i = 0; i < 10; i++) {
-            dataset.add("gaurav");
-        }
+    private void addImageSlider(View view) {
+        mviewPager = view.findViewById(R.id.home_fragment_viewpager);
+        indicator = view.findViewById(R.id.mainactivity_dots);
+        sliderAdapter = new SliderAdapter(getContext());
+        mviewPager.setAdapter(sliderAdapter);
+        indicator.setViewPager(mviewPager);
 
-        eventrecycler=view.findViewById(R.id.event_recycler);
-        eventrecycler.setHasFixedSize(true);
-
-        eventlayoutmanager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-        eventrecycler.setLayoutManager(eventlayoutmanager);
-
-        eventadapter = new EventAdapter(dataset);
-        eventrecycler.setAdapter(eventadapter);
-        return view;
     }
 
 
@@ -130,7 +124,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
         if(view==v.findViewById(R.id.events_seeall))
         {
-        startActivity(new Intent(getContext(),EventActivity.class));
+            startActivity(new Intent(getContext(),EventActivity.class));
         }
     }
 }
