@@ -38,36 +38,45 @@ public class GurugyanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gurugyan);
+
+        //initialising elements
         guruName=findViewById(R.id.gurugyan_name);
+        expandableView=findViewById(R.id.expandable_layout);
+        OnTap=findViewById(R.id.expand_ontap);
+        CircleIndicator indicator=findViewById(R.id.gurugyan_dots);
+        myCardView=findViewById(R.id.mycardview);
+        GurugyanPager =findViewById(R.id.guru_viewpager);
+
+
+        //Adding elements in slides
         guruList=new ArrayList<>();
         guruList.add(new GurugyanModel(R.drawable.xmen,"Testgo"));
         guruList.add(new GurugyanModel(R.drawable.punisher,"AgainTest"));
         guruList.add(new GurugyanModel(R.drawable.punisher,"yetAgain"));
-        adapter=new GurugyanPagerAdapter(this,guruList);
-        myCardView=findViewById(R.id.mycardview);
-        CircleIndicator indicator=findViewById(R.id.gurugyan_dots);
-        OnTap=findViewById(R.id.expand_ontap);
-        expandableView=findViewById(R.id.expandable_layout);
 
-        guruName.setText(guruList.get(0).getName());
-        GurugyanPager =findViewById(R.id.guru_viewpager);
+        //creating adapter
+        adapter=new GurugyanPagerAdapter(this,guruList);
         GurugyanPager.setAdapter(adapter);
-        GurugyanPager.setPageTransformer(false,new IntroPageTransform());
         indicator.setViewPager(GurugyanPager);
 
+        //setting page transform animation
+        GurugyanPager.setPageTransformer(false,new IntroPageTransform());
+        guruName.setText(guruList.get(0).getName());
+
+        //applying Page change Listner
         GurugyanPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-           float sumPositionandOffset;
            int positionpre;
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
 
             }
 
             @Override
             public void onPageSelected(final int position) {
 
+
+                //expanding and contracting the bottom card
                 OnTap.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -80,6 +89,7 @@ public class GurugyanActivity extends AppCompatActivity {
                     }
                 });
 
+                //changing the text of each slide with animation
                 GurugyanModel current=guruList.get(position);
                 Animation slideInLeft=AnimationUtils.loadAnimation(GurugyanActivity.this, R.anim.slide_in_left);
                 Animation slideInRight=AnimationUtils.loadAnimation(GurugyanActivity.this, R.anim.slide_in_right);
@@ -94,6 +104,7 @@ public class GurugyanActivity extends AppCompatActivity {
                     guruName.setAnimation(slideInLeft);
 
                 }
+                //setting the previous position
                 positionpre=position;
 
             }
@@ -103,7 +114,6 @@ public class GurugyanActivity extends AppCompatActivity {
 
             }
         });
-
 
 
 
