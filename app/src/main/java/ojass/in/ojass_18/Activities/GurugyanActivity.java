@@ -65,14 +65,13 @@ public class GurugyanActivity extends AppCompatActivity {
         indicator.setViewPager(GurugyanPager);
 
         GurugyanPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+           float sumPositionandOffset;
+           int positionpre;
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                GurugyanModel current=guruList.get(position);
-                Animation slideIn=AnimationUtils.loadAnimation(GurugyanActivity.this,R.anim.slide_in_left);
-                Animation slideOut=AnimationUtils.loadAnimation(GurugyanActivity.this,R.anim.slide_out_right);
-                guruName.setText(current.getName());
-                guruName.setAnimation(slideIn);
+
             }
 
             @Override
@@ -105,6 +104,24 @@ public class GurugyanActivity extends AppCompatActivity {
                             GurugyanPager.setCurrentItem(position+1,true);
                     }
                 });
+
+
+                GurugyanModel current=guruList.get(position);
+                Animation slideInLeft=AnimationUtils.loadAnimation(GurugyanActivity.this,R.anim.slide_in_left);
+                Animation slideInRight=AnimationUtils.loadAnimation(GurugyanActivity.this,R.anim.slide_in_right);
+                guruName.setText(current.getName());
+                if(position>positionpre)
+                {
+                    guruName.setAnimation(slideInRight);
+
+                }
+                else
+                {
+                    guruName.setAnimation(slideInLeft);
+
+                }
+                positionpre=position;
+
             }
 
             @Override
