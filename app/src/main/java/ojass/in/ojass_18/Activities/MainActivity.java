@@ -1,6 +1,7 @@
 package ojass.in.ojass_18.Activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -95,10 +96,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         {
             if(currentFragmentTag!="Profile")
             {
+
                 newFragment=new ProfileFragment();
                 changeFragment(newFragment,"Profile");
                 currentFragmentTag="Profile";
-
             }
         }
 
