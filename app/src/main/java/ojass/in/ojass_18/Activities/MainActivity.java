@@ -9,32 +9,54 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
+import ojass.in.ojass_18.Dialog.NotificationsDialog;
 import ojass.in.ojass_18.Fragments.EventsFragment;
 import ojass.in.ojass_18.Fragments.HomeFragment;
 import ojass.in.ojass_18.Fragments.ItinaryFragment;
 import ojass.in.ojass_18.Fragments.ProfileFragment;
 import ojass.in.ojass_18.R;
+import ojass.in.ojass_18.Dialog.SubscribeDialog;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Dialog mDialog;
     private String currentFragmentTag;
+    LinearLayout subscribe;
+    LinearLayout notifications;
     private Fragment newFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        subscribe=(LinearLayout) findViewById(R.id.toolbar_subscribe);
+        notifications=(LinearLayout) findViewById(R.id.toolbar_notifications);
         setBottomNavigation();
 
         addHomeFragment();
+        subscribe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SubscribeDialog dialogFragment=new SubscribeDialog();
+                dialogFragment.show(getSupportFragmentManager(),"Subscribe");
+            }
+        });
+                notifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NotificationsDialog dialogFragment=new NotificationsDialog();
+                dialogFragment.show(getFragmentManager(),"Notifications");
+            }
+        });
+
     }
 
     private void addHomeFragment() {
