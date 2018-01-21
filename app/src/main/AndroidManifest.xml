@@ -19,6 +19,7 @@
         <activity android:name=".Activities.EventActivity"></activity>
         <activity android:name=".Activities.GurugyanActivity" />
         <activity android:name=".Activities.SponsorsActivity"></activity>
+        <activity android:name=".Activities.TeamPage"/>
     </application>
 
 </manifest>

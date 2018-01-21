@@ -21,14 +21,209 @@
             android:id="@+id/activity_main_fragmentcontainer"
             >
         </FrameLayout>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="slide up"
 
-            />
+
+            <LinearLayout
+                android:id="@+id/scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:animateLayoutChanges="true"
+
+                >
+
+
+                <Button
+                    android:id="@+id/scroll_up_button"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="slide up"
+                    />
+                <RelativeLayout
+                    android:id="@+id/scroll_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="#BB757575"
+                    android:layout_alignParentBottom="true"
+                    android:visibility="gone"
+
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/line1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/gurugyan_scroll"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:src="@drawable/icongurugyan"
+                                />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:textColor="#FFF"
+                                android:gravity="center"
+                                android:text="GURUGYAN"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/maps_scroll"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:src="@drawable/iconmaps"
+                                />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="#FFF"
+                                android:text="Maps"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/core_scrollUp"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:src="@drawable/iconteam"
+                                />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:textColor="#FFF"
+                                android:gravity="center"
+                                android:text="Core Team"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/line1"
+                        android:paddingTop="10dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/about_scroll"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:src="@drawable/iconaboutus"
+                                />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:textColor="#FFF"
+                                android:gravity="center"
+                                android:text="About Us"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/developers_scroll"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:src="@drawable/iconappdev"
+                                />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:textColor="#FFF"
+                                android:gravity="center"
+                                android:text="Developers"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/faq_scroll"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="3"
+                                android:src="@drawable/iconfaq"
+                                />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:textColor="#FFF"
+                                android:gravity="center"
+                                android:text="FAQ"
+                                />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
     </RelativeLayout>
 
     <include layout="@layout/include_bottomnav_toolbar"

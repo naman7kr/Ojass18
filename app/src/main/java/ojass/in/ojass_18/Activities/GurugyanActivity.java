@@ -31,7 +31,7 @@ public class GurugyanActivity extends AppCompatActivity {
     GurugyanPagerAdapter adapter;
     CardView myCardView;
     TextView guruName;
-    LinearLayout OnTap;
+    CardView OnTap;
     LinearLayout expandableView;
 
     @Override
@@ -42,8 +42,8 @@ public class GurugyanActivity extends AppCompatActivity {
         //initialising elements
         guruName=findViewById(R.id.gurugyan_name);
         expandableView=findViewById(R.id.expandable_layout);
-        OnTap=findViewById(R.id.expand_ontap);
-        CircleIndicator indicator=findViewById(R.id.gurugyan_dots);
+        OnTap=findViewById(R.id.mycardview);
+        final CircleIndicator indicator=findViewById(R.id.gurugyan_dots);
         myCardView=findViewById(R.id.mycardview);
         GurugyanPager =findViewById(R.id.guru_viewpager);
 
@@ -63,6 +63,20 @@ public class GurugyanActivity extends AppCompatActivity {
         GurugyanPager.setPageTransformer(false,new IntroPageTransform());
         guruName.setText(guruList.get(0).getName());
 
+        //expanding and contracting the bottom card
+        OnTap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(expandableView.getVisibility()==View.GONE) {
+                    expandableView.setVisibility(View.VISIBLE);
+                }
+                else if(expandableView.getVisibility()==View.VISIBLE)
+                    expandableView.setVisibility(View.GONE);
+
+            }
+        });
+
+
         //applying Page change Listner
         GurugyanPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
            int positionpre;
@@ -76,18 +90,6 @@ public class GurugyanActivity extends AppCompatActivity {
             public void onPageSelected(final int position) {
 
 
-                //expanding and contracting the bottom card
-                OnTap.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(expandableView.getVisibility()==View.GONE) {
-                            expandableView.setVisibility(View.VISIBLE);
-                        }
-                        else if(expandableView.getVisibility()==View.VISIBLE)
-                            expandableView.setVisibility(View.GONE);
-
-                    }
-                });
 
                 //changing the text of each slide with animation
                 GurugyanModel current=guruList.get(position);

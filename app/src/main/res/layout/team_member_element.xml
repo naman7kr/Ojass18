@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/events"
+    android:layout_width="wrap_content"
+    android:layout_height="132dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/teampage_image"
+            android:layout_width="100dp"
+            android:layout_height="97dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+
+            />
+
+
+            <TextView
+                android:id="@+id/teampage_name"
+                android:layout_width="match_parent"
+                android:layout_height="17dp"
+                android:layout_marginLeft="5dp"
+
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/teampage_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginLeft="5dp"
+
+
+                android:textSize="10sp" />
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
