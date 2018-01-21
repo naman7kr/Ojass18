@@ -8,6 +8,7 @@
     android:id="@+id/rel_main"
     >
     <include layout="@layout/include_toolbar"
+
         />
     <RelativeLayout
         android:layout_width="match_parent"
