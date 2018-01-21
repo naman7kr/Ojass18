@@ -75,6 +75,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.bottom_nav_qrcode).setOnClickListener(this);
         findViewById(R.id.bottom_nav_itinary).setOnClickListener(this);
         findViewById(R.id.bottom_nav_profile).setOnClickListener(this);
+        findViewById(R.id.scroll_up_button).setOnClickListener(this);
+        findViewById(R.id.gurugyan_scroll).setOnClickListener(this);
+        findViewById(R.id.about_scroll).setOnClickListener(this);
+        findViewById(R.id.core_scrollUp).setOnClickListener(this);
+        findViewById(R.id.developers_scroll).setOnClickListener(this);
+        findViewById(R.id.faq_scroll).setOnClickListener(this);
+        findViewById(R.id.maps_scroll).setOnClickListener(this);
 
     }
     @Override
@@ -132,6 +139,46 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         {
             mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
             mDialog.dismiss();
+        }
+
+        if(view.getId()==R.id.scroll_up_button)
+        {
+            RelativeLayout scrollUp=findViewById(R.id.scroll_up);
+            if(scrollUp.getVisibility()==View.GONE)
+            {
+                scrollUp.setVisibility(View.VISIBLE);
+            }
+            else if(scrollUp.getVisibility()==View.VISIBLE)
+            {
+                scrollUp.setVisibility(View.GONE);
+            }
+        }
+
+        if(view.getId()==R.id.gurugyan_scroll)
+        {
+            startActivity(new Intent(MainActivity.this,GurugyanActivity.class));
+        }
+
+        if(view.getId()==R.id.developers_scroll)
+        {
+
+        }
+        if (view.getId()==R.id.about_scroll)
+        {
+
+        }
+        if(view.getId()==R.id.faq_scroll)
+        {
+
+        }
+        if(view.getId()==R.id.maps_scroll)
+        {
+
+        }
+        if(view.getId()==R.id.core_scrollUp)
+        {
+            startActivity(new Intent(MainActivity.this,TeamPage.class));
+
         }
     }
     private void createQRPopup() {
