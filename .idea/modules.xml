@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Ojass18.iml" filepath="$PROJECT_DIR$/Ojass18.iml" />
+      <module fileurl="file://C:\Users\skshubhamiitkmr\AndroidStudioProjects\OjassProfileActivity\Ojass18.iml" filepath="C:\Users\skshubhamiitkmr\AndroidStudioProjects\OjassProfileActivity\Ojass18.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OjassProfileActivity.iml" filepath="$PROJECT_DIR$/OjassProfileActivity.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

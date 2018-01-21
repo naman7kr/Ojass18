@@ -41,25 +41,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/profileimage"
+                android:src="@drawable/image_profile"
                 />
-
-
-
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:theme="@style/ThemeOverlay.AppCompat.Light"
                 app:layout_collapseMode="pin"
-
-
                 ></android.support.v7.widget.Toolbar>
-
-
         </android.support.design.widget.CollapsingToolbarLayout>
-
 
     </android.support.design.widget.AppBarLayout>
 

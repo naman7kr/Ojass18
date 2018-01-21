@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -27,12 +28,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Dialog mDialog;
     private String currentFragmentTag;
     private Fragment newFragment;
+    private LinearLayout toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        toolbar=findViewById(R.id.include_toolbar);
         setBottomNavigation();
 
         addHomeFragment();
@@ -42,6 +44,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         getSupportFragmentManager().beginTransaction().add(R.id.activity_main_fragmentcontainer,new HomeFragment(),"Home").commit();
         currentFragmentTag="Home";
         findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
+        toolbar.setVisibility(View.VISIBLE);
     }
 
     private void setBottomNavigation() {
@@ -62,6 +65,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new HomeFragment();
                 changeFragment(newFragment,"Home");
                 currentFragmentTag="Home";
+                toolbar.setVisibility(View.VISIBLE);
             }
 
 
@@ -73,6 +77,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new EventsFragment();
                 changeFragment(newFragment,"Events");
                 currentFragmentTag="Events";
+                toolbar.setVisibility(View.VISIBLE);
             }
 
         }
@@ -89,6 +94,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new ItinaryFragment();
                 changeFragment(newFragment,"Itinary");
                 currentFragmentTag="Itinary";
+                toolbar.setVisibility(View.VISIBLE);
             }
 
         }
@@ -100,6 +106,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new ProfileFragment();
                 changeFragment(newFragment,"Profile");
                 currentFragmentTag="Profile";
+                toolbar.setVisibility(View.GONE);
             }
         }
 

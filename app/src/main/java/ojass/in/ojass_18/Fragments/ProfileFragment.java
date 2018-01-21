@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import ojass.in.ojass_18.Views.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +45,6 @@ public class ProfileFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
 
         appBar=(AppBarLayout)view.findViewById(R.id.appBar);
-        toolBar=(Toolbar)view.findViewById(R.id.toolBar);
         collapsingToolbarLayout=(CollapsingToolbarLayout)view.findViewById(R.id.collapsingToolBarLayout);
 
 
