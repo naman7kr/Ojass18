@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import ojass.in.ojass_18.R;
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

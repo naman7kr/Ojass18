@@ -22,6 +22,7 @@ import ojass.in.ojass_18.Activities.SponsorsActivity;
 import ojass.in.ojass_18.Adapters.EventAdapter;
 import ojass.in.ojass_18.Adapters.GuruGyanAdapter;
 import ojass.in.ojass_18.Adapters.SliderAdapter;
+import ojass.in.ojass_18.Modals.EventsModel;
 import ojass.in.ojass_18.Modals.GuruGyanElement;
 import ojass.in.ojass_18.R;
 
@@ -39,7 +40,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private RecyclerView.LayoutManager eventlayoutmanager;
     private RecyclerView.Adapter eventadapter;
     private TextView eventSeeAll;
-    private ArrayList<String> dataset;
+    private ArrayList<EventsModel> dataset;
     private ViewPager mviewPager;
     private SliderAdapter sliderAdapter;
     private CircleIndicator indicator;
@@ -69,25 +70,38 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void prepareEvents(View view) {
         eventSeeAll=view.findViewById(R.id.events_seeall);
         eventSeeAll.setOnClickListener(this);
-        dataset=new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            dataset.add("gaurav");
-        }
+        dataset=new ArrayList<EventsModel>();
+        addEventsData();
         rvEvents =view.findViewById(R.id.event_recycler);
         rvEvents.setHasFixedSize(true);
         eventlayoutmanager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         rvEvents.setLayoutManager(eventlayoutmanager);
-        eventadapter = new EventAdapter(dataset);
+        eventadapter = new EventAdapter(dataset, getContext());
         rvEvents.setAdapter(eventadapter);
+    }
+    private void addEventsData() {
+
+        String []name={"April", "Choc", "Code", "director", "Drop", "Hand", "Muse",
+                "NoGround", "Pary", "Poster", "Six"};
+        int []img={R.drawable.temp_event_april, R.drawable.temp_event_choc,R.drawable.temp_event_code,R.drawable.temp_event_director,
+                R.drawable.temp_event_drop, R.drawable.temp_event_hand, R.drawable.temp_event_muse, R.drawable.temp_event_noground,
+                R.drawable.temp_event_party, R.drawable.temp_event_poster, R.drawable.temp_event_six};
+        for(int i=0;i<img.length;i++)
+        {
+            EventsModel events=new EventsModel();
+            events.setImage(img[i]);
+            events.setEventName(name[i]);
+            dataset.add(events);
+        }
     }
 
     private void prepareGuruGyan(View view) {
         gurugyanList=new ArrayList<>();
-        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"Title1"));
-        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE2"));
-        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE3"));
-        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE4"));
-        gurugyanList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"TITLE5"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.temp_guru_actor,"sponsor1"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.temp_guru_brad,"sponsor2"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.temp_guru_chris,"sponsor3"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.temp_guru_leanardo,"sponsor4"));
+        gurugyanList.add(new GuruGyanElement(R.drawable.temp_guru_paul,"sponsor5"));
         seeGuru=view.findViewById(R.id.gurugyan_seeall);
 
 
@@ -106,11 +120,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void prepareSponsor(View view)
     {
         sponsorList=new ArrayList<>();
-        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor1"));
-        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor2"));
-        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor3"));
-        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor4"));
-        sponsorList.add(new GuruGyanElement(R.drawable.ic_launcher_background,"sponsor5"));
+        sponsorList.add(new GuruGyanElement(R.drawable.temp_sponsors_codechef,"sponsor1"));
+        sponsorList.add(new GuruGyanElement(R.drawable.temp_sponsors_oyo,"sponsor2"));
+        sponsorList.add(new GuruGyanElement(R.drawable.temp_sponsors_hackerearth,"sponsor3"));
         seeSpons=view.findViewById(R.id.sponsor_seeall);
         seeSpons.setOnClickListener(this);
 
@@ -138,7 +150,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         {
             startActivity(new Intent(getContext(),GurugyanActivity.class));
         }
-         if(view==v.findViewById(R.id.sponsor_seeall))
+        if(view==v.findViewById(R.id.sponsor_seeall))
         {
             startActivity(new Intent(getContext(),SponsorsActivity.class));
         }
@@ -148,4 +160,3 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 }
-

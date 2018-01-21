@@ -24,7 +24,7 @@ import ojass.in.ojass_18.Modals.GurugyanModel;
 import ojass.in.ojass_18.Modals.IntroPageTransform;
 import ojass.in.ojass_18.R;
 
-public class GurugyanActivity extends AppCompatActivity {
+public class GurugyanActivity extends BaseActivity {
 
     ViewPager GurugyanPager;
     List<GurugyanModel> guruList;

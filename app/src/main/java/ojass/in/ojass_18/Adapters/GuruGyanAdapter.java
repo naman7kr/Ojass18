@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -20,13 +22,14 @@ import ojass.in.ojass_18.R;
 
 public class GuruGyanAdapter extends RecyclerView.Adapter<GuruGyanAdapter.MyviewHolder> {
 
-
+    private Context context;
     private LayoutInflater inflater;
     private List<GuruGyanElement> elements= Collections.emptyList();
     public GuruGyanAdapter(Context context, List<GuruGyanElement> element)
     {
         inflater=LayoutInflater.from(context);
         elements=element;
+        this.context=context;
     }
 
     @Override
@@ -42,7 +45,7 @@ public class GuruGyanAdapter extends RecyclerView.Adapter<GuruGyanAdapter.Myview
     public void onBindViewHolder(GuruGyanAdapter.MyviewHolder holder, int position) {
 
         GuruGyanElement current=elements.get(position);
-        holder.image.setImageResource(current.getImage());
+        Picasso.with(context).load(current.getImage()).fit().into(holder.image);
         holder.title.setText(current.getTitle());
     }
 
