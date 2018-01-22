@@ -4,22 +4,32 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
+import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
+import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
+import com.nightonke.boommenu.Util;
 
 import ojass.in.ojass_18.Dialog.NotificationsDialog;
 import ojass.in.ojass_18.Fragments.EventsFragment;
@@ -36,6 +46,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     RelativeLayout subscribe;
     RelativeLayout notifications;
     private Fragment newFragment;
+    ImageView bottomHomeImage;
+    TextView bottomHomeText;
+    com.nightonke.boommenu.BoomMenuButton bmb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +57,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         subscribe=findViewById(R.id.toolbar_subscribe);
         notifications= findViewById(R.id.toolbar_notification);
         setBottomNavigation();
+        bmb = findViewById(R.id.bmb);
 
         addHomeFragment();
         subscribe.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +75,56 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
 
+        String[] BMBtext = {"Gurugyan", "Maps" , "CoreTeam","About Us","Developers" , "Faq"};
+        int[] BMBimage = {R.drawable.icongurugyan, R.drawable.ic_place_black_48dp , R.drawable.iconteam , R.drawable.iconaboutus , R.drawable.iconappdev,R.drawable.iconfaq};
+        for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
+            TextOutsideCircleButton.Builder builder = new TextOutsideCircleButton.Builder()
+                    .normalImageRes(BMBimage[i])
+                    .typeface(Typeface.DEFAULT_BOLD)
+                    .rippleEffect(true)
+                    .textSize(13)
+
+                    //.imageRect(new Rect(Util.dp2px(300), Util.dp2px(300), Util.dp2px(300), Util.dp2px(300)))
+                    .listener(new OnBMClickListener() {
+                        @Override
+                        public void onBoomButtonClick(int index) {
+                            if(index == 0)
+                            {
+                                Intent intent = new Intent(MainActivity.this, GurugyanActivity.class);
+                                startActivity(intent);
+                            }
+                            if(index == 1)
+                            {
+                                Toast.makeText(MainActivity.this, "2nd btn", Toast.LENGTH_SHORT).show();
+                            }
+                            if(index == 2)
+                            {
+                                Intent intent = new Intent(MainActivity.this, TeamPage.class);
+                                startActivity(intent);
+                            }
+                            if(index == 3)
+                            {
+                                Toast.makeText(MainActivity.this, "3rd btn", Toast.LENGTH_SHORT).show();
+                            }if(index == 4)
+                            {
+                                Toast.makeText(MainActivity.this, "4th btn", Toast.LENGTH_SHORT).show();
+                            }
+                            if(index == 5)
+                            {
+                                Toast.makeText(MainActivity.this, "5th btn", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    })
+                    .normalText(BMBtext[i]);
+            bmb.addBuilder(builder);
+        }
+
     }
+
+
+
+
+
 
     private void addHomeFragment() {
         getSupportFragmentManager().beginTransaction().add(R.id.activity_main_fragmentcontainer,new HomeFragment(),"Home").commit();
