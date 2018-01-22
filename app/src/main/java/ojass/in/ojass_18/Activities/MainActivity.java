@@ -1,13 +1,21 @@
 package ojass.in.ojass_18.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -21,6 +29,9 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.lang.reflect.Field;
+
+import ojass.in.ojass_18.Adapters.BottomNavigationAdapter;
 import ojass.in.ojass_18.Dialog.NotificationsDialog;
 import ojass.in.ojass_18.Fragments.EventsFragment;
 import ojass.in.ojass_18.Fragments.HomeFragment;
@@ -33,9 +44,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Dialog mDialog;
     private String currentFragmentTag;
-    RelativeLayout subscribe;
-    RelativeLayout notifications;
+    private RelativeLayout subscribe;
+    private RelativeLayout notifications;
+    private LinearLayout toolbar;
     private Fragment newFragment;
+    private BottomNavigationView bottomNavigationView;
+    private ViewPager viewPager;
+    private RelativeLayout scrollUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +58,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         subscribe=findViewById(R.id.toolbar_subscribe);
         notifications= findViewById(R.id.toolbar_notification);
+        toolbar=findViewById(R.id.include_toolbar);
+         scrollUp=findViewById(R.id.scroll_up);
+
+         scrollUp.setVisibility(View.GONE);
         setBottomNavigation();
 
-        addHomeFragment();
         subscribe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,23 +76,74 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public void onClick(View view) {
                 NotificationsDialog dialogFragment=new NotificationsDialog();
                 dialogFragment.show(getFragmentManager(),"Notifications");
+
             }
         });
 
     }
 
-    private void addHomeFragment() {
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_main_fragmentcontainer,new HomeFragment(),"Home").commit();
-        currentFragmentTag="Home";
-        findViewById(R.id.bottom_nav_home).setBackgroundColor(Color.parseColor("#FFFFFF"));
-    }
-
     private void setBottomNavigation() {
-        findViewById(R.id.bottom_nav_home).setOnClickListener(this);
-        findViewById(R.id.bottom_nav_events).setOnClickListener(this);
-        findViewById(R.id.bottom_nav_qrcode).setOnClickListener(this);
-        findViewById(R.id.bottom_nav_itinary).setOnClickListener(this);
-        findViewById(R.id.bottom_nav_profile).setOnClickListener(this);
+        bottomNavigationView = findViewById(R.id.activity_main_bottomnavigation);
+        viewPager = findViewById(R.id.activity_main_fragmentcontainer);
+        viewPager.setAdapter(new BottomNavigationAdapter(getSupportFragmentManager()));
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.bottom_nav_home:
+                        viewPager.setCurrentItem(0);
+                        toolbar.setVisibility(View.VISIBLE);
+                        return true;
+                    case R.id.bottom_nav_events:
+                        viewPager.setCurrentItem(1);
+                        toolbar.setVisibility(View.VISIBLE);
+                        return true;
+                    case R.id.bottom_nav_itinary:
+                        viewPager.setCurrentItem(2);
+                        toolbar.setVisibility(View.VISIBLE);
+                        return true;
+                    case R.id.bottom_nav_profile:
+                        viewPager.setCurrentItem(3);
+                        toolbar.setVisibility(View.GONE);
+                        return true;
+                    case R.id.bottom_nav_qrcode:
+                        createQRPopup();
+                        return true;
+                }
+                return false;
+            }
+        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                if (position == 0) {
+                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_home);
+                }
+                if (position == 1) {
+                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_events);
+
+                }
+                if (position == 2) {
+                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_itinary);
+                }
+                if(position ==3)
+                    bottomNavigationView.setSelectedItemId(R.id.bottom_nav_profile);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        disableShiftMode(bottomNavigationView);
+
         findViewById(R.id.scroll_up_button).setOnClickListener(this);
         findViewById(R.id.gurugyan_scroll).setOnClickListener(this);
         findViewById(R.id.about_scroll).setOnClickListener(this);
@@ -83,6 +152,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.faq_scroll).setOnClickListener(this);
         findViewById(R.id.maps_scroll).setOnClickListener(this);
 
+    }
+    @SuppressLint("RestrictedApi")
+    void disableShiftMode(BottomNavigationView view) {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+        try {
+            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+            shiftingMode.setAccessible(true);
+            shiftingMode.setBoolean(menuView, false);
+            shiftingMode.setAccessible(false);
+            for (int i = 0; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                item.setShiftingMode(false);
+                // set once again checked value, so view will be updated
+                item.setChecked(item.getItemData().isChecked());
+            }
+        } catch (NoSuchFieldException e) {
+            Log.e("BNVHelper", "Unable to get shift mode field", e);
+        } catch (IllegalAccessException e) {
+            Log.e("BNVHelper", "Unable to change value of shift mode", e);
+        }
     }
     @Override
     public void onClick(View view) {
@@ -94,6 +183,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new HomeFragment();
                 changeFragment(newFragment,"Home");
                 currentFragmentTag="Home";
+                toolbar.setVisibility(View.VISIBLE);
             }
 
 
@@ -105,6 +195,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new EventsFragment();
                 changeFragment(newFragment,"Events");
                 currentFragmentTag="Events";
+                toolbar.setVisibility(View.VISIBLE);
             }
 
         }
@@ -121,6 +212,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new ItinaryFragment();
                 changeFragment(newFragment,"Itinary");
                 currentFragmentTag="Itinary";
+                toolbar.setVisibility(View.VISIBLE);
             }
 
         }
@@ -131,6 +223,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 newFragment=new ProfileFragment();
                 changeFragment(newFragment,"Profile");
                 currentFragmentTag="Profile";
+                toolbar.setVisibility(View.GONE);
 
             }
         }
@@ -143,7 +236,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         if(view.getId()==R.id.scroll_up_button)
         {
-            RelativeLayout scrollUp=findViewById(R.id.scroll_up);
+
             if(scrollUp.getVisibility()==View.GONE)
             {
                 scrollUp.setVisibility(View.VISIBLE);
@@ -182,6 +275,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
     private void createQRPopup() {
+        mDialog=new Dialog(this);
         mDialog.setContentView(R.layout.qrcode_popup);
         mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
         setQRCode(mDialog);
