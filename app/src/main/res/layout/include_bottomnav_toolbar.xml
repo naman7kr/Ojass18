@@ -5,6 +5,7 @@
     app:menu="@menu/bottom_nav_menu"
     android:id="@+id/activity_main_bottomnavigation"
     android:layout_alignParentBottom="true"
+    android:background="@color/white"
     />
 
 
