@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/home_fragment_scrollview"
+
     >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingBottom="10dp"
     >
 
     <android.support.v7.widget.CardView
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="207dp">
+        android:layout_height="207dp"
+        app:cardCornerRadius="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -61,7 +63,6 @@
                 android:text="Events"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
                 />
 
             <TextView
@@ -73,7 +74,7 @@
                 android:text="See all"
                 android:gravity="right"
                 android:textSize="18sp"
-                android:textColor="@color/white"
+
                 />
 
             <ImageView
@@ -113,7 +114,6 @@
                 android:layout_weight="1"
                 android:text="Guru Gyan"
                 android:textSize="20sp"
-                android:textColor="@color/white"
                 android:textStyle="bold"
                 />
 
@@ -125,7 +125,6 @@
                 android:text="See all"
                 android:gravity="right"
                 android:textSize="18sp"
-                android:textColor="@color/white"
                 />
 
             <ImageView
@@ -166,7 +165,6 @@
                 android:layout_marginLeft="10dp"
                 android:text="Sponsors"
                 android:textSize="20sp"
-                android:textColor="@color/white"
                 android:textStyle="bold"
                 />
 
@@ -178,7 +176,6 @@
                 android:text="See all"
                 android:gravity="right"
                 android:textSize="18sp"
-                android:textColor="@color/white"
                 />
 
             <ImageView

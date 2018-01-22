@@ -3,6 +3,7 @@ package ojass.in.ojass_18.Fragments;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
@@ -44,14 +45,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private ViewPager mviewPager;
     private SliderAdapter sliderAdapter;
     private CircleIndicator indicator;
-
+    private int itemCount;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home, container, false);
+
         v=view;
 
+        mviewPager = view.findViewById(R.id.home_fragment_viewpager);
+        sliderAdapter = new SliderAdapter(getContext());
+
+        changeSlider();
+
+        mviewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                changeSlider();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         //Sanays Work
         addImageSlider(view);
 
@@ -134,9 +157,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void addImageSlider(View view) {
-        mviewPager = view.findViewById(R.id.home_fragment_viewpager);
         indicator = view.findViewById(R.id.mainactivity_dots);
-        sliderAdapter = new SliderAdapter(getContext());
         mviewPager.setAdapter(sliderAdapter);
         indicator.setViewPager(mviewPager);
 
@@ -158,5 +179,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         {
             startActivity(new Intent(getContext(),EventActivity.class));
         }
+    }
+
+    public void changeSlider()
+    {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int currentItem=mviewPager.getCurrentItem();
+                itemCount=sliderAdapter.getCount();
+                if(currentItem<itemCount-1)
+                {
+                    mviewPager.setCurrentItem(currentItem+1);
+                }
+                else
+                {
+                    mviewPager.setCurrentItem(0);
+                }
+            }
+        }, 3*1000);
+
     }
 }
