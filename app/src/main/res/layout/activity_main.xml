@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/include_toolbar"
-        android:layout_above="@+id/bottom_nav_toolbar"
+        android:layout_above="@+id/activity_main_bottomnavigation"
         >
-        <FrameLayout
+        <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/activity_main_fragmentcontainer"
             >
-        </FrameLayout>
+        </android.support.v4.view.ViewPager>
 
 
             <LinearLayout
@@ -48,7 +48,7 @@
                     android:layout_height="250dp"
                     android:background="#BB757575"
                     android:layout_alignParentBottom="true"
-                    android:visibility="gone"
+                    android:visibility="visible"
 
                     >
 
