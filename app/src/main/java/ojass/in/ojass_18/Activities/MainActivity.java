@@ -1,6 +1,7 @@
 package ojass.in.ojass_18.Activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -8,33 +9,58 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+
+import ojass.in.ojass_18.Dialog.NotificationsDialog;
 import ojass.in.ojass_18.Fragments.EventsFragment;
 import ojass.in.ojass_18.Fragments.HomeFragment;
 import ojass.in.ojass_18.Fragments.ItinaryFragment;
 import ojass.in.ojass_18.Fragments.ProfileFragment;
 import ojass.in.ojass_18.R;
+import ojass.in.ojass_18.Dialog.SubscribeDialog;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Dialog mDialog;
     private String currentFragmentTag;
+    LinearLayout subscribe;
+    LinearLayout notifications;
     private Fragment newFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        subscribe=(LinearLayout) findViewById(R.id.toolbar_subscribe);
+        notifications=(LinearLayout) findViewById(R.id.toolbar_notifications);
         setBottomNavigation();
 
         addHomeFragment();
+        subscribe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SubscribeDialog dialogFragment=new SubscribeDialog();
+                dialogFragment.show(getSupportFragmentManager(),"Subscribe");
+            }
+        });
+                notifications.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NotificationsDialog dialogFragment=new NotificationsDialog();
+                dialogFragment.show(getFragmentManager(),"Notifications");
+            }
+        });
+
     }
 
     private void addHomeFragment() {
@@ -49,6 +75,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.bottom_nav_qrcode).setOnClickListener(this);
         findViewById(R.id.bottom_nav_itinary).setOnClickListener(this);
         findViewById(R.id.bottom_nav_profile).setOnClickListener(this);
+        findViewById(R.id.scroll_up_button).setOnClickListener(this);
+        findViewById(R.id.gurugyan_scroll).setOnClickListener(this);
+        findViewById(R.id.about_scroll).setOnClickListener(this);
+        findViewById(R.id.core_scrollUp).setOnClickListener(this);
+        findViewById(R.id.developers_scroll).setOnClickListener(this);
+        findViewById(R.id.faq_scroll).setOnClickListener(this);
+        findViewById(R.id.maps_scroll).setOnClickListener(this);
 
     }
     @Override
@@ -106,6 +139,46 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         {
             mDialog.getWindow().getAttributes().windowAnimations=R.style.pop_up_anim;
             mDialog.dismiss();
+        }
+
+        if(view.getId()==R.id.scroll_up_button)
+        {
+            RelativeLayout scrollUp=findViewById(R.id.scroll_up);
+            if(scrollUp.getVisibility()==View.GONE)
+            {
+                scrollUp.setVisibility(View.VISIBLE);
+            }
+            else if(scrollUp.getVisibility()==View.VISIBLE)
+            {
+                scrollUp.setVisibility(View.GONE);
+            }
+        }
+
+        if(view.getId()==R.id.gurugyan_scroll)
+        {
+            startActivity(new Intent(MainActivity.this,GurugyanActivity.class));
+        }
+
+        if(view.getId()==R.id.developers_scroll)
+        {
+
+        }
+        if (view.getId()==R.id.about_scroll)
+        {
+
+        }
+        if(view.getId()==R.id.faq_scroll)
+        {
+
+        }
+        if(view.getId()==R.id.maps_scroll)
+        {
+
+        }
+        if(view.getId()==R.id.core_scrollUp)
+        {
+            startActivity(new Intent(MainActivity.this,TeamPage.class));
+
         }
     }
     private void createQRPopup() {
