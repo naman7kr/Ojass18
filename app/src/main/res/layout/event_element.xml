@@ -5,6 +5,7 @@
     android:layout_height="160dp"
    android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
     android:id="@+id/events"
     >
 
@@ -16,25 +17,21 @@
             android:id="@+id/eventImg"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background"
 
             />
 
         <TextView
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:paddingTop="5dp"
             android:id="@+id/event_ele"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_below="@+id/eventImg"
             android:text="Title"
             android:textSize="20sp"
-
-
             />
-
-
-
     </RelativeLayout>
 
 
