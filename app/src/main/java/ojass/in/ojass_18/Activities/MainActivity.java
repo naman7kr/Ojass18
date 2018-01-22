@@ -33,16 +33,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Dialog mDialog;
     private String currentFragmentTag;
-    LinearLayout subscribe;
-    LinearLayout notifications;
+    RelativeLayout subscribe;
+    RelativeLayout notifications;
     private Fragment newFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        subscribe=(LinearLayout) findViewById(R.id.toolbar_subscribe);
-        notifications=(LinearLayout) findViewById(R.id.toolbar_notifications);
+        subscribe=findViewById(R.id.toolbar_subscribe);
+        notifications= findViewById(R.id.toolbar_notification);
         setBottomNavigation();
 
         addHomeFragment();
