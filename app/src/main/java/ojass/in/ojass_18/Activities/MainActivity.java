@@ -109,7 +109,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         return true;
                     case R.id.bottom_nav_qrcode:
                         createQRPopup();
-                        return true;
+                        return false;
                 }
                 return false;
             }
