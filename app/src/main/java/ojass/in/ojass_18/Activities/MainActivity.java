@@ -20,6 +20,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import com.nightonke.boommenu.BoomButtons.BoomButton;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -34,6 +35,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.nightonke.boommenu.BoomButtons.BoomButton;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
 import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
@@ -61,6 +63,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private BottomNavigationView bottomNavigationView;
     private ViewPager viewPager;
     private RelativeLayout scrollUp;
+    private com.nightonke.boommenu.BoomMenuButton bmb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
