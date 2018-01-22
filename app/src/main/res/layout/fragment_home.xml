@@ -61,7 +61,6 @@
                 android:text="Events"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
                 />
 
             <TextView
@@ -73,7 +72,7 @@
                 android:text="See all"
                 android:gravity="right"
                 android:textSize="18sp"
-                android:textColor="@color/white"
+
                 />
 
             <ImageView
@@ -113,7 +112,6 @@
                 android:layout_weight="1"
                 android:text="Guru Gyan"
                 android:textSize="20sp"
-                android:textColor="@color/white"
                 android:textStyle="bold"
                 />
 
@@ -125,7 +123,6 @@
                 android:text="See all"
                 android:gravity="right"
                 android:textSize="18sp"
-                android:textColor="@color/white"
                 />
 
             <ImageView
@@ -166,7 +163,6 @@
                 android:layout_marginLeft="10dp"
                 android:text="Sponsors"
                 android:textSize="20sp"
-                android:textColor="@color/white"
                 android:textStyle="bold"
                 />
 
@@ -178,7 +174,6 @@
                 android:text="See all"
                 android:gravity="right"
                 android:textSize="18sp"
-                android:textColor="@color/white"
                 />
 
             <ImageView
