@@ -1,6 +1,4 @@
-package ojass.in.ojass_18.Infrastructure;
-
-import android.widget.ImageView;
+package ojass.in.ojass_18.Modals;
 
 /**
  * Created by dellpc on 1/14/2018.

@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFF</color>
     <color name="bottomNavDark">#686d7b</color>
+    <color name="colorRipple">#EEEEEE</color>
+    <color name="mainTextColor">#343d43</color>
+    <color name="btnRequest">#ffbf12</color>
+
 </resources>

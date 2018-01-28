@@ -9,8 +9,8 @@ import ojass.in.ojass_18.Fragments.ItinaryFragment;
 import ojass.in.ojass_18.Fragments.ProfileFragment;
 
 
-public class bottomNavigationAdapter extends FragmentPagerAdapter {
-    public bottomNavigationAdapter(FragmentManager supportFragmentManager) {
+public class BottomNavigationAdapter extends FragmentPagerAdapter {
+    public BottomNavigationAdapter(FragmentManager supportFragmentManager) {
         super(supportFragmentManager);
     }
 

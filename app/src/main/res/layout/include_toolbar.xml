@@ -1,9 +1,62 @@
-<android.support.v7.widget.Toolbar
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+    android:layout_height="56dp"
+    android:background="@color/colorPrimary"
     android:id="@+id/include_toolbar"
-    ></android.support.v7.widget.Toolbar>
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ojass 18"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
 
+        />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+    <RelativeLayout
+        android:layout_width="40dp"
+        android:layout_height="56dp"
+        android:id="@+id/toolbar_subscribe"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconsubscribe"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="40dp"
+        android:layout_height="56dp"
+        android:id="@+id/toolbar_notification"
+        android:layout_marginRight="10dp"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/iconnotification"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:text="2"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_red_dark"
+            />
+    </RelativeLayout>
+</LinearLayout>
